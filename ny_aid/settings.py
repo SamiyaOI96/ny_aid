@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nyc',
+    #'django_model_mixins',
+    #'catalog',
+    #'catalog.contrib.defaults',
     
 ]
 

@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from rest_framework import routers
+from nyc import views
+from django.db import models
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('nyc/',include('nyc.urls')),
-    
+    path('',include('nyc.urls')),
+
 ]
