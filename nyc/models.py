@@ -12,7 +12,7 @@ class MutualAid(models.Model):
     name=models.CharField("Name",max_length=254)
     category=models.CharField("Category",max_length=254)
     website=models.URLField("Website",max_length=254)
-    email=models.EmailField("Email",max_length=254)
+    email=models.EmailField("Email",max_length=254,blank=True)
 
     def __str__(self)->str:
         return self.name
