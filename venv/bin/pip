@@ -1,4 +1,4 @@
-#!/Users/samiyaismail/ny_aid/venv/bin/python3.10
+#!/Users/samiyaismail/ny_aid/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

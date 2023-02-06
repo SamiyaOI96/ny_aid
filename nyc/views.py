@@ -29,6 +29,13 @@ def borough(request,format=None):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     #return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(['GET'])
+def borough_detail(request,format=None):
+    if request.method=='GET':
+        id = request.query_params.get("id")
+        boroughsone=Borough.objects.filter(id=id)
+        serializer=BoroughSerializer(boroughsone,many=True)
+        return Response(serializer.data)
 
 
 @api_view(['GET','POST','PUT','DELETE'])
@@ -72,6 +79,34 @@ def mutual_aid(request,format=None,):
         mutualaids=MutualAid.objects.all()
         mutualaids.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+@api_view(['GET','PATCH','POST'])
+def aid_detail(request,format=None):
+    # try:
+    #     mutualaids=MutualAid.objects(id=id)
+    # except MutualAid.DoesNotExist:
+    #     return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method=='GET':
+        id = request.query_params.get("id")
+        mutualaids=MutualAid.objects.filter(id=id)
+        serializer = MutualaidSerializer(mutualaids,many=True)
+        return Response(serializer.data)
+    elif request.method=='PUT':
+        serializer = MutualaidSerializer(mutualaids, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors,status=status.HTTP_404_NOT_FOUND)
+    elif request.method=='DELETE':
+        mutualaids.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
+
+#routes for one borough
+#routes for one mutual aid
 
 
 

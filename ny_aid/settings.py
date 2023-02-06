@@ -31,6 +31,7 @@ SECRET_KEY = 'django-insecure-0c&rs(=%+!^kt+ltguf@y9f)g=37@^tdarheqr*(u2=o8a&i0w
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nyc',
+    
     #'django_model_mixins',
     #'catalog',
     #'catalog.contrib.defaults',
@@ -56,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'ny_aid.urls'
