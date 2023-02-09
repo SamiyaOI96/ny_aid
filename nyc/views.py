@@ -36,6 +36,9 @@ def borough_detail(request,format=None):
         boroughsone=Borough.objects.filter(id=id)
         serializer=BoroughSerializer(boroughsone,many=True)
         return Response(serializer.data)
+    # elif request.method == 'DELETE':
+    #     boroughsone.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET','POST','PUT','DELETE'])
@@ -61,7 +64,10 @@ def mutual_aid(request,format=None,):
 
     
     elif request.method=='POST':
-        serializer = MutualaidSerializer(data=request.data)
+        id = request.query_params.get("borough_id")
+        requestData=request.data
+        requestData["borough"]=id
+        serializer = MutualaidSerializer(data=requestData)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
