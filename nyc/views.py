@@ -99,6 +99,21 @@ def aid_detail(request,format=None):
         serializer = MutualaidSerializer(mutualaids,many=True)
         
         return Response(serializer.data)
+    
+    elif request.method=='POST':
+        id = request.query_params.get("borough_id")
+        requestData=request.data
+        requestData["borough"]=id
+        serializer = MutualaidSerializer(data=requestData)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+    
+    
+    
     elif request.method=='PUT':
         id = request.query_params.get("id")
         mutualaids=MutualAid.objects.filter(id=id)
