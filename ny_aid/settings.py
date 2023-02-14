@@ -82,8 +82,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ny_aid.wsgi.application'
-# DATABASES = {}
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Database
@@ -152,3 +152,9 @@ dbenvdatabase = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(dbenvdatabase)
 print(dbenvdatabase)
 print(DATABASES['default'])
+# import django_heroku
+
+# django_heroku.settings(locals())
+
+# options = DATABASES['default'].get('OPTIONS', {})
+# options.pop('sslmode', None)
