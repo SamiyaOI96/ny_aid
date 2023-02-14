@@ -150,3 +150,5 @@ options.pop('sslmode', None)
 # DATABASES = {}
 dbenvdatabase = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(dbenvdatabase)
+print(dbenvdatabase)
+print(DATABASES['default'])
