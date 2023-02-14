@@ -10,6 +10,7 @@ django-model-mixins==0.1.3
 django-mptt==0.14.0
 djangorestframework==3.14.0
 extdirect.django==0.3
+gunicorn==20.1.0
 Markdown==3.4.1
 psycopg2-binary==2.9.5
 pytz==2022.7.1
