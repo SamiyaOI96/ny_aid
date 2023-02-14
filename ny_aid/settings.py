@@ -109,15 +109,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nyc',
-        'USER':'samiyaismail',
-        'PASSWORD':'',
-        'HOST':'localhost'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'nyc',
+#         'USER':'samiyaismail',
+#         'PASSWORD':'',
+#         'HOST':'localhost'
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
