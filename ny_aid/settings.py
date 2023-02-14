@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import environ
 import os
+import dj_database_url
 
 env=environ.Env()
 environ.Env.read_env()
@@ -81,8 +82,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ny_aid.wsgi.application'
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES = {}
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Database
@@ -109,15 +110,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'nyc',
-#         'USER':'samiyaismail',
-#         'PASSWORD':'',
-#         'HOST':'localhost'
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nyc',
+        'USER':'samiyaismail',
+        'PASSWORD':'',
+        'HOST':'localhost'
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -146,5 +147,6 @@ django_heroku.settings(locals())
 
 options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode', None)
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES = {}
+dbenvdatabase = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(dbenvdatabase)
